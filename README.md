@@ -97,7 +97,7 @@ Generates comprehensive cost optimization and anomaly detection report.
 ---
 
 ## 👤 Author
-**Aarthi S** — AI & Data Science Engineer  
+**Aarthi S** — AI & ML Engineer  
 * B.Tech in Artificial Intelligence & Data Science, Panimalar Engineering College  
 * 📧 Email: [aarthi784197@gmail.com](mailto:aarthi784197@gmail.com)  
 * 💼 LinkedIn: [linkedin.com/in/s-aarthi-](https://www.linkedin.com/in/s-aarthi-)  

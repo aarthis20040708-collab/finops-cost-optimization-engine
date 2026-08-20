@@ -25,5 +25,14 @@ def generate_cloud_billing_logs(num_records: int = 200) -> pd.DataFrame:
     return pd.DataFrame(data)
 
 class CloudBillingTelemetryGenerator:
-    def generate_synthetic_billing_logs(self, num_records: int = 200) -> pd.DataFrame:
-        return generate_cloud_billing_logs(num_records)
+    def __init__(self, n_records: int = 200):
+        self.n_records = n_records
+
+    def generate_synthetic_billing_logs(self, num_records: int = None) -> pd.DataFrame:
+        return generate_cloud_billing_logs(num_records or self.n_records)
+
+    def generate_telemetry(self, num_records: int = None) -> pd.DataFrame:
+        return self.generate_synthetic_billing_logs(num_records)
+
+    def generate_dataset(self, num_records: int = None) -> pd.DataFrame:
+        return self.generate_synthetic_billing_logs(num_records)

@@ -9,7 +9,7 @@ from src.data_gen import generate_cloud_billing_logs
 from src.pipeline import FinOpsOptimizationPipeline
 
 st.set_page_config(
-    page_title="FinOps Cloud Cost Engine",
+    page_title="FinOps Cloud Cost Engine | AI Optimizer",
     page_icon="⚡",
     layout="wide"
 )
@@ -22,8 +22,8 @@ def load_data():
 df = load_data()
 pipeline = FinOpsOptimizationPipeline(df)
 
-st.title("⚡ FinOps Cloud Cost Optimization & Anomaly Engine")
-st.caption("Automated multi-cloud spend analytics, SQL transformation pipelines, and idle compute rightsizing.")
+st.title("⚡ FinOps Cloud Cost Optimization & AI Anomaly Engine")
+st.caption("Automated multi-cloud spend analytics, SQL transformation pipelines, and Groq-powered AI FinOps recommendations.")
 
 c1, c2, c3 = st.columns(3)
 with c1:
@@ -45,4 +45,22 @@ with col_a:
 with col_b:
     st.subheader("⚠️ Idle & Overprovisioned Compute Instances")
     idle_df = pipeline.get_idle_resources()
-    st.dataframe(idle_df[["resource_id", "service_name", "environment", "cpu_utilization_pct", "daily_cost_usd"]].head(10))
+    st.dataframe(idle_df[["resource_id", "service_name", "environment", "cpu_utilization_pct", "daily_cost_usd"]].head(10), use_container_width=True)
+
+st.divider()
+
+st.subheader("🤖 Groq AI FinOps Executive Advisor")
+st.write("Generates actionable remediation playbooks for engineering and finance leadership.")
+
+if st.button("🚀 Generate AI Cost Optimization Playbook", type="primary"):
+    with st.spinner("Analyzing telemetry with Groq Cloud LLM..."):
+        report = pipeline.generate_cost_optimization_report()
+        st.success(f"✓ Analysis Complete! Evaluated {report['total_resources_evaluated']} resources.")
+        st.markdown(f"""
+        <div style="background-color:#111827; border:1px solid #1f2937; border-radius:10px; padding:20px; margin-top:10px;">
+            <h4 style="color:#06d6a0; margin-top:0;">📊 Executive Recommendations</h4>
+            <div style="color:#f3f4f6; font-size:14px; line-height:1.7;">
+                {report['ai_finops_recommendation']}
+            </div>
+        </div>
+        """, unsafe_allow_html=True)

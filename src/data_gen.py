@@ -23,3 +23,7 @@ def generate_cloud_billing_logs(num_records: int = 200) -> pd.DataFrame:
         "usage_date": dates
     }
     return pd.DataFrame(data)
+
+class CloudBillingTelemetryGenerator:
+    def generate_synthetic_billing_logs(self, num_records: int = 200) -> pd.DataFrame:
+        return generate_cloud_billing_logs(num_records)
